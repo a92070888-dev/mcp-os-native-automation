@@ -57,3 +57,17 @@ terminal("start calc")
 | 4 | Hermes-Split-OS SDK (parallel multi-agent framework) | License |
 
 **Inquiries:** [Open B2B Ticket](https://github.com/a92070888-dev/mcp-os-native-automation/issues/new?labels=commercial&template=b2b-inquiry.md) or **a92070888@gmail.com**
+
+
+## Tools (Open-Core)
+
+| Tool | Description | Latency |
+|:-----|:------------|:------:|
+| feom_click | Click at screen coords via SendInput | ~4ms |
+| feom_uia_invoke | Invoke UIA element by AutomationID | ~8ms |
+| feom_launch | Launch app via terminal pipe | ~0.01s |
+| feom_list_windows | List all visible windows | ~75ms |
+
+### Quick Start
+pip install pywinauto pywin32 mcp
+python server.py
