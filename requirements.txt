@@ -1,0 +1,2 @@
+pywin32>=310
+pywinauto>=0.6.8
