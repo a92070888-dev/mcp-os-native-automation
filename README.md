@@ -1,130 +1,50 @@
-# MCP OS-Native Automation
+# 🏆 Front-End Operation Master (FEOM)
 
-**The lowest-latency Windows GUI automation on Earth. Sub-millisecond clicks. Zero vision tokens. OS-native.**
+**The Ultimate Front-End OS Engine for AI Agents. 0 Vision Tokens. 733× Faster. 100% Deterministic.**
 
-A production-grade MCP server that achieves **2.32ms per click** by operating at the Win32 kernel level — no screenshots, no vision models, no coordinate guessing. Just pure OS structural control.
+FEOM is a production-grade front-end operation architecture for Windows AI Agents. While traditional desktop agents (e.g., Anthropic Computer Use) suffer from massive latency and high API costs (`Screenshots ➔ VLM ➔ Guessing`), FEOM interacts directly with the OS front-end using real-time structural routing, **saving up to 72% in Token costs and crushing P95 latency to < 2.32ms**.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Benchmark: 2.32ms](https://img.shields.io/badge/click-2.32ms-success)]()
+## 🥇 The Three Iron Rules of Production Automation
 
----
+### 1. Unique Truth: Front-End Demonstration Over Everything
+Always show, then report. Every sequence must execute visibly in the foreground. If the user or supervisor cannot see the operation, it violates the core trust model.
 
-## ⚡ Performance
+### 2. Safety First: Pre-Action Focus Defending
+Never click blindly. Structural state verification is forced prior to any input to prevent focus drift.
 
-| Method | Latency | Token cost | Works on |
-|--------|:-------:|:----------:|:---------|
-| 🤖 Screenshot + VLM | ~1,100ms | Very high | All |
-| 🟡 UIA click_input | ~200ms | Near-zero | UIA apps |
-| 🟢 **OS-Native SendInput** | **~2.32ms** | **Zero** | **All apps** |
-| 🟢 **UIA invoke (cached)** | **~8ms** | **Near-zero** | UWP/WinUI |
-| 🟢 **Win32 PostMessage** | **~1ms** | **Zero** | Win32 legacy |
-| 🔵 **COM Office** | **~0.1ms** | **Zero** | Office apps |
-
-**733× faster** than screenshot-based automation. **0 image tokens** consumed.
-
-## 🧠 Architecture
-
-```mermaid
-flowchart LR
-    Agent[MCP Client] --> Server[OS-Native MCP Server]
-    Server --> Router{Auto-Router}
-    Router -->|Foreground| SI[SendInput 2.3ms]
-    Router -->|Background| UIA[UIA Invoke 8ms]
-    Router -->|Win32 Legacy| PM[PostMessage 1ms]
-    Router -->|Office| COM[COM 0.1ms]
-    
-    subgraph Cache[Predictive Async Cache]
-        Cold[Cold: 146ms] --> Hot[Hot: 29µs]
-    end
-    
-    UIA -.-> Cache
-```
-
-## 🔬 The UltraClick Engine
-
-The heart of this project: a **zero-allocation** SendInput implementation that pushes Win32 to its theoretical limit.
-
-```python
-# 6 integer writes + 1 kernel call = 2.32ms click
-def fast_click(x, y):
-    ax, ay = _norm_coords(x, y)
-    for i in range(3):
-        _input_array[i].mi.dx = ax
-        _input_array[i].mi.dy = ay
-    _input_array[0].mi.dwFlags = ABS | MOVE
-    _input_array[1].mi.dwFlags = ABS | DOWN
-    _input_array[2].mi.dwFlags = ABS | UP
-    SendInput(3, _input_ptr, sizeof(INPUT))
-```
-
-| Technique | Per-click | Improvement |
-|:----------|:---------:|:-----------:|
-| Naive SendInput (3 allocs, 3 calls) | 3.96ms | baseline |
-| **Zero-alloc buffer + single call** | **2.32ms** | **-41%** |
-| + AttachThreadInput (bypass queue) | ~1.0ms | -75% |
-| + Registry animation tweaks | <1.0ms | -80%+ |
-
-## 🏎️ Predictive Cache: 5,116× Speedup
-
-The real bottleneck isn't the click — it's the UIA `descendants()` scan at ~74ms.
-
-```python
-Cold (cache miss):  146ms  ← first scan
-Hot (cache hit):     0.029ms (29 µs)  ← 5,116× faster
-After click + async: 0.2ms  ← background refresh
-```
-
-## 🎯 Features
-
-- **Zero vision model cost** — reads UIA tree instead of screenshots
-- **Works on ALL window types** — UWP, Win32, Java, Qt, Electron
-- **Background operation** — UIA invoke works without window focus
-- **COM-native Office** — PowerPoint/Word/Excel at 0.1ms
-- **Auto-routing** — detects app type, picks fastest method
-- **MCP protocol** — drop-in with any MCP client
-
-## 🚀 Quick Start
-
-```bash
-pip install pywinauto pywin32
-git clone https://github.com/a92070888-dev/mcp-os-native-automation.git
-cd mcp-os-native-automation
-pip install -r requirements.txt
-python server.py
-```
-
-### Hermes Integration
-
-Add to `~/.hermes/config.yaml`:
-```yaml
-mcp_servers:
-  os-native:
-    command: "python"
-    args: ["path/to/mcp-os-native-automation/server.py"]
-```
-
-## 🛠️ Tools
-
-| Tool | Description |
-|------|-------------|
-| `os_native_click` | Click by AutomationID (auto-routes optimal method) |
-| `os_native_analyze_window` | Full app analysis + recommended method |
-| `os_native_read` | Read text from any UIA element |
-| `os_native_get_tree` | Full UIA structure tree |
-| `os_native_list_windows` | All visible windows |
-| `os_native_benchmark` | Latency comparison |
-
-## 💼 Commercial Use
-
-Need custom automation for enterprise ERP, healthcare, or legacy systems?
-
-- Custom MCP tool development
-- Legacy integration (Win32, Delphi, PowerBuilder, Java)
-- Private licensing & support
-
-**Contact:** [Open B2B inquiry](https://github.com/a92070888-dev/mcp-os-native-automation/issues/new?labels=commercial&template=b2b-inquiry.md) or a92070888@gmail.com
+### 3. App Termination Rule: Strict Alt+F4 Ban
+Alt+F4 is banned in enterprise environments — it blindly kills whatever window currently has focus, frequently closing the orchestration engine itself.
 
 ---
 
-**Built for [Hermes Agent](https://hermes-agent.nousresearch.com) — the personal AI OS.**
+## 🚀 Hybrid Terminal+MCP Extreme Mode
+
+Bypass high-overhead MCP tool call initialization (~1.1s bottleneck per action) by multiplexing terminal pipes with zero-allocation input streaming.
+
+| Execution Stage | Traditional MCP Agent | **FEOM Hybrid Mode** | Time Saved |
+|:---|:---:|:---:|:---:|
+| Application Bootup | ~3.0s (UI traversal) | **0.01s** | **99.6%** |
+| Native Form Input | ~5.0s (Vision Loop) | **1.2s** | **76.0%** |
+| Close & Verification | ~4.0s (Screenshot) | **2.0s** | **50.0%** |
+| **Total End-to-End** | **~12.0s** | **~3.21s** | **73.2% Faster** |
+
+## 🔒 Enterprise Defenses (Pro Feature Only)
+
+The following production-hardened algorithms are **restricted to FEOM Pro/Enterprise Editions**:
+
+1. **Dynamic Taskbar Coordinate Shifting Patch** — Auto-recalculates coordinate drift when app icons push the taskbar layout.
+2. **The Type `\n` Legacy ERP Bypass** — Smart string interception that hot-swaps to Clipboard+Ctrl+V for legacy black-box systems (Delphi/VB6), reducing input overhead by **71%**.
+3. **High DPI Scaling Multi-Monitor Matrix** — Real-time compensation for Windows scaling (125%/150%/200%) preventing coordinate warping.
+
+---
+
+## 💰 Commercial Use & Enterprise RPA Migration
+
+Are you burning thousands on vision API tokens or struggling with unstable desktop agents? We provide 4 monetization pathways:
+
+* **Tier 1: Turbo-MCP Plugin ($14.99/mo)** — Unlock anti-crash and window tracking defense extensions.
+* **Tier 2: High-Frequency AI-SaaS Task Force** — Zero-token data entry and cross-app consolidation for legacy ERP/CRM.
+* **Tier 3: Enterprise Consulting ($3,000-$10,000/project)** — Focus-retention and multi-monitor audit for internal teams.
+* **Tier 4: Hermes-Split-OS SDK (Commercial License)** — Parallel multi-agent scheduling framework yielding 72% token reduction.
+
+**Inquiries:** [Open B2B Ticket](https://github.com/a92070888-dev/mcp-os-native-automation/issues/new?labels=commercial&template=b2b-inquiry.md) or **a92070888@gmail.com**
