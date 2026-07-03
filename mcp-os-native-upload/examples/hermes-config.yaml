@@ -1,7 +1,0 @@
-# Add this to your ~/.hermes/config.yaml under mcp_servers:
-# (restart Hermes after adding)
-mcp_servers:
-  os-native:
-    command: "C:\\Users\\PP\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe"
-    args: ["C:\\Users\\PP\\os-native-mcp\\server.py"]
-    timeout: 30
