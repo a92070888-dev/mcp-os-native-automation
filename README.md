@@ -101,3 +101,15 @@ MIT
 ---
 
 **Part of the [Hermes Agent](https://hermes-agent.nousresearch.com) ecosystem.**
+
+
+---
+
+## 💼 Commercial Use
+
+Need custom automation for your enterprise ERP, healthcare, or RPA systems? We offer:
+- Custom MCP tool development
+- Legacy system integration (Win32, Delphi, PowerBuilder, Java)
+- Private licensing and support
+
+**Contact:** [Open a B2B inquiry](https://github.com/a92070888-dev/mcp-os-native-automation/issues/new?labels=commercial&template=b2b-inquiry.md) or email a92070888@gmail.com
