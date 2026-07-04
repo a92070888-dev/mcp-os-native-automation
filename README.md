@@ -47,6 +47,30 @@ terminal("start calc")
 
 ---
 
+
+
+## Hardware Requirements (Killer Feature)
+
+| Requirement | Traditional VLM | FEOM Open-Core |
+|:------------|:-------------:|:-------------:|
+| GPU | RTX 3060+ required | None - any CPU works |
+| RAM | 16GB+ | 4GB |
+| Network | Required (API per click) | Zero - fully local |
+| Cost/op | $0.01-$0.05 (vision tokens) | $0 |
+| Display | Yes (needs screenshot) | No - works headless |
+| Hardware cost | $1,000+ gaming PC | $50 used Dell |
+| Annual license | $15K+ (RPA) | $0 (Open-Core) |
+
+## Deterministic vs Probabilistic
+
+| | VLM Screenshot | FEOM OS-Native |
+|:---|:-------------:|:-------------:|
+| Output | Coordinate guessing | AutomationID targeting |
+| Repeatability | Different each time | 100% identical |
+| DPI scaling | Coordinates drift | UIA auto-maps |
+| Background | Cannot work | Works minimized |
+| Production-ready | Demo only | Production grade |
+
 ## 💼 Commercial Licensing
 
 | Tier | Product | Price |
