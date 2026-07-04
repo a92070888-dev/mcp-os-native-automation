@@ -83,6 +83,28 @@ terminal("start calc")
 **Inquiries:** [Open B2B Ticket](https://github.com/a92070888-dev/mcp-os-native-automation/issues/new?labels=commercial&template=b2b-inquiry.md) or **a92070888@gmail.com**
 
 
+
+
+## 3-Line Quick Start
+
+```bash
+pip install pywinauto pywin32 mcp
+python server.py
+```
+
+Then add to MCP client config:
+```json
+{
+  "mcpServers": {
+    "feom": {
+      "command": "python",
+      "args": ["path/to/server.py"]
+    }
+  }
+}
+```
+
+No GPU. No cloud API. No Docker. Any Windows PC.
 ## Tools (Open-Core)
 
 | Tool | Description | Latency |
