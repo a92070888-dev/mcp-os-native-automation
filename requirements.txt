@@ -1,4 +1,4 @@
+pywinauto>=0.6.8
 pywin32>=310
-pywinauto>=0.6.8mcp>=1.26.0
-pydantic>=2.0
-
+mcp>=1.26.0
+pydantic>=2.0.0
