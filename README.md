@@ -117,3 +117,101 @@ No GPU. No cloud API. No Docker. Any Windows PC.
 ### Quick Start
 pip install pywinauto pywin32 mcp
 python server.py
+
+---
+
+## Installation
+
+### Option 1: pip install (recommended)
+
+```bash
+pip install feom-mcp
+python -m feom.server
+```
+
+### Option 2: Clone and run
+
+```bash
+git clone https://github.com/a92070888-dev/mcp-os-native-automation.git
+cd mcp-os-native-automation
+pip install -r requirements.txt
+python server.py
+```
+
+### Option 3: UVX (MCP client auto-discovery)
+
+```json
+{
+  "mcpServers": {
+    "feom": {
+      "command": "uvx",
+      "args": ["feom-mcp"]
+    }
+  }
+}
+```
+
+## MCP Client Configuration
+
+### Claude Desktop
+
+Add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "feom": {
+      "command": "python",
+      "args": ["path/to/server.py"]
+    }
+  }
+}
+```
+
+### Cursor IDE
+
+Add to `.cursor/mcp.json` in your project:
+
+```json
+{
+  "mcpServers": {
+    "feom": {
+      "command": "python",
+      "args": ["path/to/server.py"]
+    }
+  }
+}
+```
+
+### Any MCP Client (stdio)
+
+```json
+{
+  "mcpServers": {
+    "feom": {
+      "command": "uvx",
+      "args": ["feom-mcp"]
+    }
+  }
+}
+```
+
+### Verify Installation
+
+```bash
+python server.py
+# Server starts on stdio. Expected output:
+# FEOM MCP server ready
+```
+
+## Requirements
+
+- **OS**: Windows 10/11 only
+- **Python**: 3.10+
+- **No GPU required**
+- **No API keys required**
+- **No Docker required**
+
+---
+
+### 3-Line Quick Start
