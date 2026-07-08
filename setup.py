@@ -1,9 +1,10 @@
 from setuptools import setup, find_packages
+from pathlib import Path
 setup(
     name="feom-mcp",
-    version="0.1.0",
+    version="0.1.1",
     description="OS-native Windows GUI automation MCP server. Zero GPU, zero API tokens.",
-    long_description=open("README.md").read() if __import__("os").path.exists("README.md") else "",
+    long_description=open("README.md", encoding="utf-8").read() if Path("README.md").is_file() else "",
     long_description_content_type="text/markdown",
     packages=find_packages(),
     py_modules=["server"],
