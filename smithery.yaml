@@ -1,0 +1,15 @@
+# Smithery configuration file for FEOM MCP Server
+# https://smithery.ai/docs/config#smitheryyaml
+startCommand:
+  type: stdio
+  configSchema:
+    # no config required for the open-core version
+    type: object
+    properties: {}
+  commandFunction:
+    # A JS function that produces the CLI command to start the MCP on stdio
+    |-
+      (config) => ({
+        command: 'python',
+        args: ['server.py']
+      })
